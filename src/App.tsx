@@ -2102,7 +2102,7 @@ return    (
                 Research Project: Ethical Implications of AI in Academic Work Among UK Students
               </p>
               <p className="text-xs text-gray-500 mt-1">
-                MSc Information Technology - Newcastle University
+                MSc Information Technology - Univeristy of the West of England
               </p>
             </div>
           </footer>
