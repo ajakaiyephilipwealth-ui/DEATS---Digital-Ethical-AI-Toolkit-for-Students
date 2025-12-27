@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useState } from 'react';
 import { BookOpen, ClipboardCheck, MessageSquare, Library, Home, Award, AlertCircle, CheckCircle, XCircle, HelpCircle } from 'lucide-react';
 
-const DEATSToolkit = () => {
+function DEATSToolkit() {
   const [currentPage, setCurrentPage] = useState('role-selection');
   const [userRole, setUserRole] = useState(null);
   const [quizAnswers, setQuizAnswers] = useState<any>({});
-  const [quizSubmitted, setQuizSubmitted] = useState<boolean>(false);
+  const [quizSubmitted, setQuizSubmitted] = useState(false);
   const [feedbackData, setFeedbackData] = useState<any>(null);
   const [completedStages, setCompletedStages] = useState({
     visitedDashboard: false,
@@ -53,69 +54,219 @@ const DEATSToolkit = () => {
     return { stage: 'In Progress', color: 'blue', message: 'Keep going!' };
   };
 
-  const renderRoleSelection = () => (
-    <div className="w-full min-h-screen bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 flex items-center justify-center p-4">
-      <div className="max-w-4xl w-full">
-        <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold text-white mb-4">Welcome to DEATS</h1>
-          <p className="text-2xl text-blue-100 mb-2">Digital Ethical AI Toolkit for Students</p>
-          <p className="text-lg text-blue-200">Please select your role to continue</p>
+  const renderRoleSelection = () =>{
+console.log('in role selection')
+return    (
+      <div className="min-h-screen bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700 flex items-center justify-center p-4 relative overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute w-96 h-96 bg-white opacity-10 rounded-full -top-48 -left-48 animate-pulse"></div>
+          <div className="absolute w-96 h-96 bg-white opacity-10 rounded-full -bottom-48 -right-48 animate-pulse"></div>
+          <div className="absolute w-64 h-64 bg-white opacity-5 rounded-full top-1/4 right-1/4 animate-pulse"></div>
         </div>
-
-        <div className="grid md:grid-cols-2 gap-6">
-          <button
-            onClick={() => handleRoleSelection('student')}
-            className="bg-white rounded-2xl p-8 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300"
-          >
-            <div className="text-center">
-              <div className="bg-blue-100 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6">
-                <BookOpen size={48} className="text-blue-600" />
-              </div>
-              <h2 className="text-3xl font-bold text-gray-800 mb-3">Student</h2>
-              <p className="text-gray-600 mb-4">
-                Learn ethical AI practices, assess your usage, and access resources to maintain academic integrity
-              </p>
-              <div className="bg-blue-50 rounded-lg p-4 text-sm text-gray-700">
-                <p className="font-semibold mb-2">You will get:</p>
-                <ul className="text-left space-y-1">
-                  <li>• Personalized dashboard</li>
-                  <li>• Self-assessment tools</li>
-                  <li>• Educational resources</li>
-                  <li>• AI usage guidelines</li>
-                </ul>
+  
+        <div className="max-w-6xl w-full relative z-10">
+          <div className="text-center mb-12">
+            <div className="inline-block mb-6">
+              <div className="bg-white bg-opacity-20 backdrop-blur-lg rounded-full p-6 shadow-2xl">
+                <BookOpen size={64} className="text-white" />
               </div>
             </div>
-          </button>
-
-          <button
-            onClick={() => handleRoleSelection('instructor')}
-            className="bg-white rounded-2xl p-8 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300"
-          >
-            <div className="text-center">
-              <div className="bg-purple-100 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Award size={48} className="text-purple-600" />
+            <h1 className="text-6xl font-extrabold text-white mb-4 drop-shadow-lg">
+              Welcome to DEATS
+            </h1>
+            <div className="bg-white bg-opacity-20 backdrop-blur-md rounded-2xl p-6 max-w-3xl mx-auto mb-4">
+              <p className="text-3xl font-bold text-white mb-2">Digital Ethical AI Toolkit for Students</p>
+              <p className="text-xl text-black">Your Guide to Responsible AI Use in Academia</p>
+            </div>
+            <p className="text-lg text-white font-medium">
+              Learn, Assess, and Succeed with Academic Integrity
+            </p>
+          </div>
+  
+          <div className="grid md:grid-cols-2 gap-8 mb-8">
+            <div className="group">
+              <button
+                onClick={() => handleRoleSelection('student')}
+                className="w-full bg-white rounded-3xl p-8 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 text-left relative overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-400 to-blue-600 opacity-10 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
+                
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="bg-gradient-to-br from-blue-500 to-blue-600 w-20 h-20 rounded-2xl flex items-center justify-center shadow-lg group-hover:rotate-12 transition-transform duration-300">
+                      <BookOpen size={40} className="text-white" />
+                    </div>
+                    <span className="bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-bold">
+                      STUDENT
+                    </span>
+                  </div>
+                  
+                  <h2 className="text-3xl font-bold text-gray-800 mb-3 group-hover:text-blue-600 transition-colors">
+                    I am a Student
+                  </h2>
+                  <p className="text-gray-600 mb-6 text-lg">
+                    Learn how to use AI ethically, assess your practices, and access resources to maintain academic integrity throughout your studies.
+                  </p>
+                  
+                  <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-5 mb-4">
+                    <p className="font-semibold text-blue-800 mb-3 flex items-center gap-2">
+                      <CheckCircle size={20} className="text-blue-600" />
+                      What You Will Get:
+                    </p>
+                    <ul className="space-y-2 text-sm text-gray-700">
+                      <li className="flex items-start gap-2">
+                        <span className="text-blue-600 font-bold">•</span>
+                        <span><strong>Personalized Dashboard:</strong> Track your learning progress</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-blue-600 font-bold">•</span>
+                        <span><strong>Self-Assessment Quiz:</strong> Evaluate your AI usage practices</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-blue-600 font-bold">•</span>
+                        <span><strong>Educational Resources:</strong> Learn responsible AI principles</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-blue-600 font-bold">•</span>
+                        <span><strong>Practical Checklists:</strong> Step-by-step AI usage guidelines</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-blue-600 font-bold">•</span>
+                        <span><strong>Instant Feedback:</strong> Get personalized recommendations</span>
+                      </li>
+                    </ul>
+                  </div>
+  
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-gray-500 italic">Click to start your journey</span>
+                    <div className="bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold group-hover:bg-blue-700 transition-colors flex items-center gap-2">
+                      Enter as Student
+                      <span className="group-hover:translate-x-1 transition-transform">→</span>
+                    </div>
+                  </div>
+                </div>
+              </button>
+            </div>
+  
+            <div className="group">
+              <button
+                onClick={() => handleRoleSelection('instructor')}
+                className="w-full bg-white rounded-3xl p-8 shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 text-left relative overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-400 to-purple-600 opacity-10 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
+                
+                <div className="relative z-10">
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="bg-gradient-to-br from-purple-500 to-purple-600 w-20 h-20 rounded-2xl flex items-center justify-center shadow-lg group-hover:rotate-12 transition-transform duration-300">
+                      <Award size={40} className="text-white" />
+                    </div>
+                    <span className="bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-bold">
+                      INSTRUCTOR
+                    </span>
+                  </div>
+                  
+                  <h2 className="text-3xl font-bold text-gray-800 mb-3 group-hover:text-purple-600 transition-colors">
+                    I am an Instructor
+                  </h2>
+                  <p className="text-gray-600 mb-6 text-lg">
+                    Access teaching resources, understand student AI use patterns, and promote ethical AI practices in your classroom and institution.
+                  </p>
+                  
+                  <div className="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl p-5 mb-4">
+                    <p className="font-semibold text-purple-800 mb-3 flex items-center gap-2">
+                      <Award size={20} className="text-purple-600" />
+                      What You Will Get:
+                    </p>
+                    <ul className="space-y-2 text-sm text-gray-700">
+                      <li className="flex items-start gap-2">
+                        <span className="text-purple-600 font-bold">•</span>
+                        <span><strong>Teaching Dashboard:</strong> Overview of student support tools</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-purple-600 font-bold">•</span>
+                        <span><strong>Policy Guidelines:</strong> Framework for AI use policies</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-purple-600 font-bold">•</span>
+                        <span><strong>Student Support Resources:</strong> Materials to share with students</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-purple-600 font-bold">•</span>
+                        <span><strong>Assessment Tools:</strong> Guide for fair evaluation</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-purple-600 font-bold">•</span>
+                        <span><strong>Best Practices:</strong> Strategies for promoting integrity</span>
+                      </li>
+                    </ul>
+                  </div>
+  
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-gray-500 italic">Click to access resources</span>
+                    <div className="bg-purple-600 text-white px-6 py-3 rounded-xl font-semibold group-hover:bg-purple-700 transition-colors flex items-center gap-2">
+                      Enter as Instructor
+                      <span className="group-hover:translate-x-1 transition-transform">→</span>
+                    </div>
+                  </div>
+                </div>
+              </button>
+            </div>
+          </div>
+  
+          <div className="bg-white bg-opacity-20 backdrop-blur-md rounded-2xl p-6 text-white">
+            <h3 className="text-xl font-bold mb-4 text-center">Why Choose DEATS?</h3>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="text-center">
+                <div className="bg-white bg-opacity-20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
+                  <span className="text-3xl">🎯</span>
+                </div>
+                <h4 className="font-semibold mb-2">Evidence-Based</h4>
+                <p className="text-sm text-black">Built on research from leading academics and institutions</p>
               </div>
-              <h2 className="text-3xl font-bold text-gray-800 mb-3">Instructor</h2>
-              <p className="text-gray-600 mb-4">
-                Access teaching resources, understand student AI use patterns, and promote ethical AI practices
-              </p>
-              <div className="bg-purple-50 rounded-lg p-4 text-sm text-gray-700">
-                <p className="font-semibold mb-2">You will get:</p>
-                <ul className="text-left space-y-1">
-                  <li>• Teaching dashboard</li>
-                  <li>• Policy guidelines</li>
-                  <li>• Student support resources</li>
-                  <li>• Assessment tools</li>
-                </ul>
+              <div className="text-center">
+                <div className="bg-white bg-opacity-20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
+                  <span className="text-3xl">⚡</span>
+                </div>
+                <h4 className="font-semibold mb-2">Interactive Learning</h4>
+                <p className="text-sm text-black">Engaging modules with instant feedback and guidance</p>
+              </div>
+              <div className="text-center">
+                <div className="bg-white bg-opacity-20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
+                  <span className="text-3xl">🛡️</span>
+                </div>
+                <h4 className="font-semibold mb-2">Protect Your Integrity</h4>
+                <p className="text-sm text-black">Stay compliant while leveraging AI technology</p>
               </div>
             </div>
-          </button>
+          </div>
+  
+          <div className="text-center mt-8 text-white text-sm">
+            <p className="opacity-90">
+              Research Project: University of the West of England (UWE Bristol)
+            </p>
+            <p className="opacity-75 mt-1">
+              MSc Information Technology - Ethical AI in Academic Work
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } 
 
-  const renderStudentDashboard = () => (
+  const renderStudentDashboard = () => {
+    const progress = calculateProgress();
+    const progressStage = getProgressStage();
+    
+    const stageColorClasses:any = {
+      gray: 'bg-gray-100 text-gray-700',
+      blue: 'bg-blue-100 text-blue-700',
+      indigo: 'bg-indigo-100 text-indigo-700',
+      purple: 'bg-purple-100 text-purple-700',
+      orange: 'bg-orange-100 text-orange-700',
+      green: 'bg-green-100 text-green-700'
+    };
+    
+    return (
     <div className="space-y-6">
       <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-8 rounded-lg shadow-lg">
         <h1 className="text-4xl font-bold mb-2">Welcome, Student!</h1>
@@ -130,12 +281,80 @@ const DEATSToolkit = () => {
           </div>
           <div className="space-y-3">
             <div>
-              <p className="text-sm text-gray-600 mb-1">Assessment Completed</p>
-              <div className="bg-gray-200 rounded-full h-2">
-                <div className={`bg-green-500 h-2 rounded-full ${quizSubmitted ? 'w-full' : 'w-0'}`}></div>
+              <div className="flex justify-between items-center mb-2">
+                <p className="text-sm font-semibold text-gray-700">Learning Journey</p>
+                <span className={`text-xs font-bold px-2 py-1 rounded-full ${stageColorClasses[progressStage.color]}`}>
+                  {progressStage.stage}
+                </span>
+              </div>
+              <div className="bg-gray-200 rounded-full h-3 mb-2">
+                <div 
+                  className="bg-gradient-to-r from-green-500 to-blue-500 h-3 rounded-full transition-all duration-500"
+                  style={{ width: `${progress.percentage}%` }}
+                ></div>
+              </div>
+              <p className="text-xs text-gray-600">{progress.completed} of {progress.total} stages completed</p>
+            </div>
+            
+            <div className="pt-3 border-t">
+              <p className="text-xs font-semibold text-gray-700 mb-2">Completed Stages:</p>
+              <div className="space-y-1">
+                <div className="flex items-center gap-2 text-xs">
+                  {completedStages.visitedDashboard ? (
+                    <CheckCircle size={14} className="text-green-500" />
+                  ) : (
+                    <div className="w-3.5 h-3.5 rounded-full border-2 border-gray-300"></div>
+                  )}
+                  <span className={completedStages.visitedDashboard ? 'text-green-700 font-medium' : 'text-gray-500'}>
+                    Dashboard Introduction
+                  </span>
+                </div>
+                <div className="flex items-center gap-2 text-xs">
+                  {completedStages.readEducation ? (
+                    <CheckCircle size={14} className="text-green-500" />
+                  ) : (
+                    <div className="w-3.5 h-3.5 rounded-full border-2 border-gray-300"></div>
+                  )}
+                  <span className={completedStages.readEducation ? 'text-green-700 font-medium' : 'text-gray-500'}>
+                    Educational Module
+                  </span>
+                </div>
+                <div className="flex items-center gap-2 text-xs">
+                  {completedStages.completedQuiz ? (
+                    <CheckCircle size={14} className="text-green-500" />
+                  ) : (
+                    <div className="w-3.5 h-3.5 rounded-full border-2 border-gray-300"></div>
+                  )}
+                  <span className={completedStages.completedQuiz ? 'text-green-700 font-medium' : 'text-gray-500'}>
+                    Self-Assessment Quiz
+                  </span>
+                </div>
+                <div className="flex items-center gap-2 text-xs">
+                  {completedStages.viewedResources ? (
+                    <CheckCircle size={14} className="text-green-500" />
+                  ) : (
+                    <div className="w-3.5 h-3.5 rounded-full border-2 border-gray-300"></div>
+                  )}
+                  <span className={completedStages.viewedResources ? 'text-green-700 font-medium' : 'text-gray-500'}>
+                    Resource Hub
+                  </span>
+                </div>
+                <div className="flex items-center gap-2 text-xs">
+                  {completedStages.viewedChecklist ? (
+                    <CheckCircle size={14} className="text-green-500" />
+                  ) : (
+                    <div className="w-3.5 h-3.5 rounded-full border-2 border-gray-300"></div>
+                  )}
+                  <span className={completedStages.viewedChecklist ? 'text-green-700 font-medium' : 'text-gray-500'}>
+                    Practical Checklist
+                  </span>
+                </div>
               </div>
             </div>
-            <p className="text-2xl font-bold text-gray-800">{quizSubmitted ? 'Complete' : 'Not Started'}</p>
+            
+            <div className="pt-3">
+              <p className="text-xs text-gray-600 italic">{progressStage.message}</p>
+            </div>
           </div>
         </div>
 
@@ -144,21 +363,72 @@ const DEATSToolkit = () => {
             <h3 className="text-lg font-semibold text-gray-800">Learning Status</h3>
             <BookOpen className="text-blue-500" size={24} />
           </div>
-          <p className="text-sm text-gray-600 mb-2">Modules Explored</p>
-          <p className="text-2xl font-bold text-gray-800">Ready to Learn</p>
+          <div className="space-y-2">
+            <div className="flex justify-between items-center">
+              <p className="text-sm text-gray-600">Current Stage</p>
+              <span className="text-sm font-semibold text-blue-700">{progressStage.stage}</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <p className="text-sm text-gray-600">Quiz Status</p>
+              <span className={`text-sm font-semibold ${quizSubmitted ? 'text-green-700' : 'text-gray-500'}`}>
+                {quizSubmitted ? 'Completed' : 'Not Started'}
+              </span>
+            </div>
+            {quizSubmitted && feedbackData && (
+              <div className="pt-2 border-t mt-2">
+                <p className="text-xs text-gray-600 mb-1">Your Assessment Level:</p>
+                <p className={`text-sm font-semibold ${
+                  feedbackData.color === 'green' ? 'text-green-700' :
+                  feedbackData.color === 'blue' ? 'text-blue-700' :
+                  feedbackData.color === 'orange' ? 'text-orange-700' :
+                  'text-red-700'
+                }`}>
+                  {feedbackData.level}
+                </p>
+                <p className="text-xs text-gray-600 mt-1">Score: {feedbackData.percentage.toFixed(0)}%</p>
+              </div>
+            )}
+          </div>
         </div>
 
         <div className="bg-white p-6 rounded-lg shadow-md border-t-4 border-purple-500">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-semibold text-gray-800">Quick Action</h3>
+            <h3 className="text-lg font-semibold text-gray-800">Next Step</h3>
             <AlertCircle className="text-purple-500" size={24} />
           </div>
-          <button
-            onClick={() => setCurrentPage('quiz')}
-            className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 rounded-lg transition"
-          >
-            Take Assessment
-          </button>
+          <div className="space-y-3">
+            {!completedStages.readEducation && (
+              <button
+                onClick={() => setCurrentPage('education')}
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition"
+              >
+                Start Learning
+              </button>
+            )}
+            {completedStages.readEducation && !completedStages.completedQuiz && (
+              <button
+                onClick={() => setCurrentPage('quiz')}
+                className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-lg transition"
+              >
+                Take Assessment
+              </button>
+            )}
+            {completedStages.completedQuiz && !completedStages.viewedResources && (
+              <button
+                onClick={() => setCurrentPage('resources')}
+                className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 rounded-lg transition"
+              >
+                View Resources
+              </button>
+            )}
+            {completedStages.viewedResources && progress.percentage === 100 && (
+              <div className="text-center">
+                <CheckCircle className="text-green-500 mx-auto mb-2" size={48} />
+                <p className="text-sm font-semibold text-green-700">All Stages Complete!</p>
+                <p className="text-xs text-gray-600 mt-1">You are ready to use AI ethically</p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
@@ -938,7 +1208,7 @@ const DEATSToolkit = () => {
       <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-lg">
         <h3 className="text-xl font-bold text-blue-800 mb-3 flex items-center gap-2">
           <HelpCircle className="text-blue-600" />
-          Understanding Your University's AI Instructions
+          Understanding Your University AI Instructions
         </h3>
         <p className="text-gray-700 mb-4">
           Many students find university AI policies confusing. Here is how to understand and follow them:
@@ -967,7 +1237,7 @@ const DEATSToolkit = () => {
             <ol className="text-sm text-gray-700 space-y-2 list-decimal list-inside">
               <li>Read the assignment brief carefully and highlight AI-related statements</li>
               <li>Check your module handbook for the AI policy</li>
-              <li>Review your university's general academic integrity policy</li>
+              <li>Review your university general academic integrity policy</li>
               <li>If still unclear, email your instructor with specific questions</li>
               <li>Attend office hours to discuss AI use for your specific assignment</li>
               <li>Document any guidance you receive for future reference</li>
@@ -1022,6 +1292,7 @@ const DEATSToolkit = () => {
       </div>
     </div>
   );
+};
 
   const renderInstructorDashboard = () => (
     <div className="space-y-6">
@@ -1305,6 +1576,7 @@ const DEATSToolkit = () => {
       const feedback = generateFeedback();
       setFeedbackData(feedback);
       setQuizSubmitted(true);
+      setCompletedStages(prev => ({ ...prev, completedQuiz: true }));
     } else {
       alert("Please answer all questions before submitting.");
     }
@@ -1318,7 +1590,7 @@ const DEATSToolkit = () => {
 
   const renderHome = () => (
     <div className="space-y-6">
-      <div className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white p-8 rounded-lg">
+      <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-8 rounded-lg">
         <h1 className="text-4xl font-bold mb-4">Welcome to DEATS</h1>
         <p className="text-xl mb-2">Digital Ethical AI Toolkit for Students</p>
         <p className="text-blue-100">Balancing Innovation and Integrity in Higher Education</p>
@@ -1810,7 +2082,7 @@ const DEATSToolkit = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gray-100 w-full">
+    <div className="min-h-screen bg-gray-100">
       {currentPage === 'role-selection' && renderRoleSelection()}
       
       {currentPage !== 'role-selection' && (
@@ -1880,18 +2152,25 @@ const DEATSToolkit = () => {
                       </>
                     )}
                   </div>
-                  <button
-                    onClick={() => {
-                      setUserRole(null);
-                      setCurrentPage('role-selection');
-                      setQuizAnswers({});
-                      setQuizSubmitted(false);
-                      setFeedbackData(null);
-                    }}
-                    className="text-sm text-gray-600 hover:text-gray-800 underline"
-                  >
-                    Switch Role
-                  </button>
+          <button
+            onClick={() => {
+              setUserRole(null);
+              setCurrentPage('role-selection');
+              setQuizAnswers({});
+              setQuizSubmitted(false);
+              setFeedbackData(null);
+              setCompletedStages({
+                visitedDashboard: false,
+                readEducation: false,
+                completedQuiz: false,
+                viewedResources: false,
+                viewedChecklist: false
+              });
+            }}
+            className="text-sm text-gray-600 hover:text-gray-800 underline"
+          >
+            Switch Role
+          </button>
                 </div>
               </div>
             </div>
@@ -1900,9 +2179,9 @@ const DEATSToolkit = () => {
           <div className="max-w-7xl mx-auto px-4 pb-8">
             {currentPage === 'dashboard' && userRole === 'student' && renderStudentDashboard()}
             {currentPage === 'dashboard' && userRole === 'instructor' && renderInstructorDashboard()}
-            {currentPage === 'education' && renderEducation()}
-            {currentPage === 'quiz' && renderQuiz()}
-            {currentPage === 'resources' && renderResources()}
+            {currentPage === 'education' && userRole === 'student' && renderEducation()}
+            {currentPage === 'quiz' && userRole === 'student' && renderQuiz()}
+            {currentPage === 'resources' && userRole === 'student' && renderResources()}
           </div>
 
           <footer className="bg-white border-t mt-12 py-6">
@@ -1922,6 +2201,5 @@ const DEATSToolkit = () => {
       )}
     </div>
   );
-};
-
-export default DEATSToolkit;
+}
+export default DEATSToolkit
