@@ -56,14 +56,14 @@ return    (
           <div className="text-center mb-12">
             <div className="inline-block mb-6">
               <div className="bg-white bg-opacity-20 backdrop-blur-lg rounded-full p-6 shadow-2xl">
-                <BookOpen size={64} className="text-white" />
+                <BookOpen size={64} className="text-black" />
               </div>
             </div>
             <h1 className="text-6xl font-extrabold text-white mb-4 drop-shadow-lg">
               Welcome to DEATS
             </h1>
             <div className="bg-white bg-opacity-20 backdrop-blur-md rounded-2xl p-6 max-w-3xl mx-auto mb-4">
-              <p className="text-3xl font-bold text-white mb-2">Digital Ethical AI Toolkit for Students</p>
+              <p className="text-3xl font-bold text-black mb-2">Digital Ethical AI Toolkit for Students</p>
               <p className="text-xl text-black">Your Guide to Responsible AI Use in Academia</p>
             </div>
             <p className="text-lg text-white font-medium">
@@ -202,27 +202,27 @@ return    (
           </div>
   
           <div className="bg-white bg-opacity-20 backdrop-blur-md rounded-2xl p-6 text-white">
-            <h3 className="text-xl font-bold mb-4 text-center">Why Choose DEATS?</h3>
+            <h3 className="text-xl font-bold mb-4 text-center text-black">Why Choose DEATS?</h3>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="text-center">
                 <div className="bg-white bg-opacity-20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
                   <span className="text-3xl">🎯</span>
                 </div>
-                <h4 className="font-semibold mb-2">Evidence-Based</h4>
+                <h4 className="font-semibold mb-2 text-black">Evidence-Based</h4>
                 <p className="text-sm text-black">Built on research from leading academics and institutions</p>
               </div>
               <div className="text-center">
                 <div className="bg-white bg-opacity-20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
                   <span className="text-3xl">⚡</span>
                 </div>
-                <h4 className="font-semibold mb-2">Interactive Learning</h4>
+                <h4 className="font-semibold mb-2 text-black">Interactive Learning</h4>
                 <p className="text-sm text-black">Engaging modules with instant feedback and guidance</p>
               </div>
               <div className="text-center">
                 <div className="bg-white bg-opacity-20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
                   <span className="text-3xl">🛡️</span>
                 </div>
-                <h4 className="font-semibold mb-2">Protect Your Integrity</h4>
+                <h4 className="font-semibold mb-2 text-black">Protect Your Integrity</h4>
                 <p className="text-sm text-black">Stay compliant while leveraging AI technology</p>
               </div>
             </div>
