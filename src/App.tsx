@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState } from 'react';
 import { BookOpen, ClipboardCheck, MessageSquare, Library, Home, Award, AlertCircle, CheckCircle, XCircle, HelpCircle } from 'lucide-react';
 
@@ -20,17 +19,6 @@ function DEATSToolkit() {
     setUserRole(role);
     setCurrentPage('dashboard');
     setCompletedStages(prev => ({ ...prev, visitedDashboard: true }));
-  };
-
-  const handlePageChange = (page:any) => {
-    setCurrentPage(page);
-    
-    // Track stage completion
-    if (page === 'education') {
-      setCompletedStages(prev => ({ ...prev, readEducation: true }));
-    } else if (page === 'resources') {
-      setCompletedStages(prev => ({ ...prev, viewedResources: true }));
-    }
   };
 
   const calculateProgress = () => {
@@ -1587,85 +1575,6 @@ return    (
     setQuizSubmitted(false);
     setFeedbackData(null);
   };
-
-  const renderHome = () => (
-    <div className="space-y-6">
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-8 rounded-lg">
-        <h1 className="text-4xl font-bold mb-4">Welcome to DEATS</h1>
-        <p className="text-xl mb-2">Digital Ethical AI Toolkit for Students</p>
-        <p className="text-blue-100">Balancing Innovation and Integrity in Higher Education</p>
-      </div>
-
-      <div className="grid md:grid-cols-2 gap-6">
-        <div className="bg-white p-6 rounded-lg shadow-md border-l-4 border-blue-500">
-          <h3 className="text-xl font-semibold mb-3 flex items-center gap-2">
-            <AlertCircle className="text-blue-500" />
-            Why DEATS?
-          </h3>
-          <p className="text-gray-700 mb-4">
-            As AI tools become increasingly prevalent in education, students face complex ethical decisions about their use. DEATS helps you navigate these challenges while maintaining academic integrity.
-          </p>
-          <ul className="space-y-2 text-gray-600">
-            <li className="flex items-start gap-2">
-              <CheckCircle className="text-green-500 flex-shrink-0 mt-1" size={16} />
-              <span>Learn ethical AI practices</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <CheckCircle className="text-green-500 flex-shrink-0 mt-1" size={16} />
-              <span>Assess your current AI usage</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <CheckCircle className="text-green-500 flex-shrink-0 mt-1" size={16} />
-              <span>Get personalized guidance</span>
-            </li>
-          </ul>
-        </div>
-
-        <div className="bg-white p-6 rounded-lg shadow-md border-l-4 border-purple-500">
-          <h3 className="text-xl font-semibold mb-3 flex items-center gap-2">
-            <BookOpen className="text-purple-500" />
-            Get Started
-          </h3>
-          <p className="text-gray-700 mb-4">
-            Explore DEATS through four comprehensive modules designed to enhance your understanding of ethical AI use:
-          </p>
-          <div className="space-y-3">
-            <button 
-              onClick={() => setCurrentPage('education')}
-              className="w-full text-left p-3 bg-blue-50 hover:bg-blue-100 rounded transition"
-            >
-              <span className="font-semibold text-blue-700">Educational Module</span>
-              <p className="text-sm text-gray-600">Learn ethical principles</p>
-            </button>
-            <button 
-              onClick={() => setCurrentPage('quiz')}
-              className="w-full text-left p-3 bg-green-50 hover:bg-green-100 rounded transition"
-            >
-              <span className="font-semibold text-green-700">Self-Assessment Quiz</span>
-              <p className="text-sm text-gray-600">Evaluate your practices</p>
-            </button>
-            <button 
-              onClick={() => setCurrentPage('resources')}
-              className="w-full text-left p-3 bg-purple-50 hover:bg-purple-100 rounded transition"
-            >
-              <span className="font-semibold text-purple-700">Resource Hub</span>
-              <p className="text-sm text-gray-600">Access guidelines and examples</p>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div className="bg-amber-50 border-l-4 border-amber-500 p-6 rounded-lg">
-        <h3 className="text-lg font-semibold mb-2 flex items-center gap-2">
-          <Award className="text-amber-600" />
-          Research Context
-        </h3>
-        <p className="text-gray-700">
-          DEATS is part of research examining ethical implications of AI in UK higher education. Your engagement with this toolkit contributes to understanding how students can balance innovation with academic integrity.
-        </p>
-      </div>
-    </div>
-  );
 
   const renderEducation = () => (
     <div className="space-y-6">
